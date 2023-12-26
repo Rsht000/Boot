@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop</title>
+    <style>
+        table th, table td {padding: 15px;}
+        .row  {
+            font-style: initial;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Table</h1>
+<table border="5">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Lastname</th>
+        <th>Age</th>
+        <th>Update User</th>
+        <th>Delete User</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:href="@{show}" th:text="${user.getId()}"></td>
+        <td th:utext="${user.getName()}"></td>
+        <td th:utext="${user.getLastName()}"></td>
+        <td th:utext="${user.getAge()}"></td>
+        <td><a th:href="@{Update-User(id=${user.id})}">Update</a> </td>
+        <td><a th:href="@{delete(id=${user.id})}">Delete</a> </td>
+    </tr>
+    <tbody>
+</table>
+</div>
+<p><a href="/addNewUser"> Create User</a></p>
+</body>
+</html>
